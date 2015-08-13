@@ -10,4 +10,5 @@ else()
     find_package(BunsanCMake CONFIG REQUIRED)
 endif()
 
+set(BUNSAN_SMOKE_ROOT ${CMAKE_BINARY_DIR}/root)
 add_subdirectory(boost)
