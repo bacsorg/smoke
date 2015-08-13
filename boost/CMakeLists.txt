@@ -3,7 +3,6 @@ project(bunsan_bacs_smoke_boost)
 bunsan_find_python2()
 
 if(UNIX)
-    set(noop true)
     set(boost_configure
         ./bootstrap.sh
             --with-toolset=gcc
@@ -20,7 +19,6 @@ if(UNIX)
             threading=multi
     )
 elseif(WIN32)
-    set(noop call)
     set(boost_configure
         bootstrap.bat
             --with-toolset=gcc
@@ -52,7 +50,7 @@ ExternalProject_Add(boost
 ExternalProject_Add(boost_dll
     GIT_REPOSITORY https://github.com/apolukhin/Boost.DLL.git
     BUILD_IN_SOURCE 1
-    CONFIGURE_COMMAND ${noop}
-    BUILD_COMMAND ${noop}
+    CONFIGURE_COMMAND ${BUNSAN_SMOKE_NOOP}
+    BUILD_COMMAND ${BUNSAN_SMOKE_NOOP}
     INSTALL_COMMAND ${CMAKE_COMMAND} -E copy_directory include ${BUNSAN_SMOKE_ROOT}/include
 )
