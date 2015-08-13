@@ -21,7 +21,27 @@ else()
 endif()
 
 set(BUNSAN_SMOKE_ROOT ${CMAKE_BINARY_DIR}/root)
-add_subdirectory(boost)
-add_subdirectory(botan)
-add_subdirectory(pika)
-add_subdirectory(turtle)
+add_subdirectory(boost EXCLUDE_FROM_ALL)
+add_subdirectory(botan EXCLUDE_FROM_ALL)
+add_subdirectory(pika EXCLUDE_FROM_ALL)
+add_subdirectory(turtle EXCLUDE_FROM_ALL)
+
+include(ExternalProject)
+macro(add_bunsan_project name path)
+    ExternalProject_Add(${name}
+        DOWNLOAD_COMMAND ""
+        SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/${path}
+        CMAKE_ARGS
+            -DCMAKE_INSTALL_PREFIX=${BUNSAN_SMOKE_ROOT}
+            -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+            -DBOOST_ROOT=${BUNSAN_SMOKE_ROOT}
+            -DBoost_NO_SYSTEM_PATHS=ON
+            -DBOOST_INCLUDEDIR=${BUNSAN_SMOKE_ROOT}/include
+            -DBOOST_LIBRARYDIR=${BUNSAN_SMOKE_ROOT}/lib
+        DEPENDS
+            boost
+            turtle
+    )
+endmacro()
+
+add_bunsan_project(bunsan_test bunsan/test)
