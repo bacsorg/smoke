@@ -4,8 +4,9 @@ bunsan_find_python3()
 set(PIKA_PYTHON_DIR
     python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages
 )
+set(PIKA_PYTHON_PATH ${BUNSAN_SMOKE_ROOT}/lib/${PIKA_PYTHON_DIR})
 set(PIKA_PYTHON_ENV ${CMAKE_COMMAND} -E env
-    PYTHONPATH=${BUNSAN_SMOKE_ROOT}/lib/${PIKA_PYTHON_DIR}
+    PYTHONPATH=${PIKA_PYTHON_PATH}
 )
 
 include(ExternalProject)
@@ -17,4 +18,8 @@ ExternalProject_Add(pika
     BUILD_COMMAND ${PIKA_PYTHON_ENV} ${PYTHON_EXECUTABLE} setup.py build
     INSTALL_COMMAND ${PIKA_PYTHON_ENV} ${PYTHON_EXECUTABLE}
         setup.py install --prefix=${BUNSAN_SMOKE_ROOT}
+)
+ExternalProject_Add_Step(pika preinstall
+    COMMAND ${CMAKE_COMMAND} -E make_directory ${PIKA_PYTHON_PATH}
+    DEPENDERS install
 )
