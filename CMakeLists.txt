@@ -12,3 +12,4 @@ endif()
 
 set(BUNSAN_SMOKE_ROOT ${CMAKE_BINARY_DIR}/root)
 add_subdirectory(boost)
+add_subdirectory(botan)
