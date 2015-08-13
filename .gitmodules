@@ -1,0 +1,3 @@
+[submodule "bunsan/cmake"]
+	path = bunsan/cmake
+	url = https://github.com/bunsanorg/cmake.git

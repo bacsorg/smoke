@@ -4,6 +4,8 @@ include(${CMAKE_SOURCE_DIR}/system-config.cmake OPTIONAL)
 
 project(bunsan_bacs_smoke)
 
+add_subdirectory(bunsan/cmake)
+
 if(BunsanCMakeBuiltin)
     BunsanCMakeLoad()
 else()
