@@ -38,11 +38,6 @@ macro(add_bunsan_project name path)
             -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
 
             -DENABLE_TESTS=OFF
-
-            -DBOOST_ROOT=${BUNSAN_SMOKE_ROOT}
-            -DBoost_NO_SYSTEM_PATHS=ON
-            -DBOOST_INCLUDEDIR=${BUNSAN_SMOKE_ROOT}/include
-            -DBOOST_LIBRARYDIR=${BUNSAN_SMOKE_ROOT}/lib
         DEPENDS
             boost
             turtle
