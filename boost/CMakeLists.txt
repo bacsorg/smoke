@@ -47,6 +47,14 @@ ExternalProject_Add(boost
     BUILD_COMMAND ${boost_b2} stage
     INSTALL_COMMAND ${boost_b2} install
 )
+ExternalProject_Add_Step(boost python3
+    COMMAND
+        ${CMAKE_COMMAND}
+            -DBOOST_SOURCE_ROOT=<SOURCE_DIR>
+            -P ${CMAKE_CURRENT_LIST_DIR}/patch.cmake
+    DEPENDERS build
+)
+
 ExternalProject_Add(boost_dll
     GIT_REPOSITORY https://github.com/apolukhin/Boost.DLL.git
     BUILD_IN_SOURCE 1
