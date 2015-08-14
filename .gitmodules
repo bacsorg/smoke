@@ -10,3 +10,6 @@
 [submodule "bunsan/process"]
 	path = bunsan/process
 	url = https://github.com/bunsanorg/process.git
+[submodule "bunsan/protobuf"]
+	path = bunsan/protobuf
+	url = https://github.com/bunsanorg/protobuf.git

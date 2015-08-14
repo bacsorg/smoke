@@ -33,9 +33,12 @@ macro(add_bunsan_project name path)
         DOWNLOAD_COMMAND ""
         SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/${path}
         CMAKE_ARGS
-            -DENABLE_TESTS=OFF
+            -DCMAKE_PREFIX_PATH=${BUNSAN_SMOKE_ROOT}
             -DCMAKE_INSTALL_PREFIX=${BUNSAN_SMOKE_ROOT}
             -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+
+            -DENABLE_TESTS=OFF
+
             -DBOOST_ROOT=${BUNSAN_SMOKE_ROOT}
             -DBoost_NO_SYSTEM_PATHS=ON
             -DBOOST_INCLUDEDIR=${BUNSAN_SMOKE_ROOT}/include
@@ -51,3 +54,4 @@ add_bunsan_project(bunsan_cmake bunsan/cmake)
 add_bunsan_project(bunsan_test bunsan/test bunsan_cmake)
 add_bunsan_project(bunsan_common bunsan/common bunsan_test)
 add_bunsan_project(bunsan_process bunsan/process bunsan_common)
+add_bunsan_project(bunsan_protobuf bunsan/protobuf protobuf bunsan_common)
