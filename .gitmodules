@@ -28,3 +28,6 @@
 [submodule "bunsan/broker"]
 	path = bunsan/broker
 	url = https://github.com/bunsanorg/broker.git
+[submodule "bunsan/bacs/common"]
+	path = bunsan/bacs/common
+	url = https://github.com/bunsanorg/bacs_common.git

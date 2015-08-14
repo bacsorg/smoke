@@ -63,3 +63,7 @@ add_bunsan_project(bunsan_broker bunsan/broker
     bunsan_pm
     bunsan_protobuf
 )
+add_bunsan_project(bunsan_bacs_common bunsan/bacs/common
+    bunsan_cmake
+    protobuf
+)
