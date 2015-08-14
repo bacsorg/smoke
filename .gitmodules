@@ -25,3 +25,6 @@
 [submodule "bunsan/common_python"]
 	path = bunsan/common_python
 	url = https://github.com/bunsanorg/common_python.git
+[submodule "bunsan/broker"]
+	path = bunsan/broker
+	url = https://github.com/bunsanorg/broker.git

@@ -58,3 +58,8 @@ add_bunsan_project(bunsan_pm bunsan/pm
     bunsan_crypto
     bunsan_utility
 )
+add_bunsan_project(bunsan_broker bunsan/broker
+    bunsan_crypto
+    bunsan_pm
+    bunsan_protobuf
+)
