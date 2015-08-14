@@ -7,3 +7,6 @@
 [submodule "bunsan/common"]
 	path = bunsan/common
 	url = https://github.com/bunsanorg/common.git
+[submodule "bunsan/process"]
+	path = bunsan/process
+	url = https://github.com/bunsanorg/process.git
