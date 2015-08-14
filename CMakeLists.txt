@@ -67,3 +67,7 @@ add_bunsan_project(bunsan_bacs_common bunsan/bacs/common
     bunsan_cmake
     protobuf
 )
+add_bunsan_project(bunsan_bacs_problem bunsan/bacs/problem
+    bunsan_pm
+    bunsan_protobuf
+)

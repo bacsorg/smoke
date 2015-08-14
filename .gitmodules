@@ -31,3 +31,6 @@
 [submodule "bunsan/bacs/common"]
 	path = bunsan/bacs/common
 	url = https://github.com/bunsanorg/bacs_common.git
+[submodule "bunsan/bacs/problem"]
+	path = bunsan/bacs/problem
+	url = https://github.com/bunsanorg/bacs_problem.git
