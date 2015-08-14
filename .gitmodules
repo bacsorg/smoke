@@ -4,3 +4,6 @@
 [submodule "bunsan/test"]
 	path = bunsan/test
 	url = https://github.com/bunsanorg/test.git
+[submodule "bunsan/common"]
+	path = bunsan/common
+	url = https://github.com/bunsanorg/common.git

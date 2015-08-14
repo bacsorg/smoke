@@ -47,3 +47,4 @@ endmacro()
 
 add_bunsan_project(bunsan_cmake bunsan/cmake)
 add_bunsan_project(bunsan_test bunsan/test bunsan_cmake)
+add_bunsan_project(bunsan_common bunsan/common bunsan_test)
