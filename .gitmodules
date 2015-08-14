@@ -22,3 +22,6 @@
 [submodule "bunsan/pm"]
 	path = bunsan/pm
 	url = https://github.com/bunsanorg/pm.git
+[submodule "bunsan/common_python"]
+	path = bunsan/common_python
+	url = https://github.com/bunsanorg/common_python.git
