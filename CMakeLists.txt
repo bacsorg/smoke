@@ -20,10 +20,11 @@ else()
     message(SEND_ERROR "Unknown platform")
 endif()
 
-set(BUNSAN_SMOKE_ROOT ${CMAKE_BINARY_DIR}/root)
+set(BUNSAN_SMOKE_ROOT ${CMAKE_BINARY_DIR}/root/usr)
 add_subdirectory(boost EXCLUDE_FROM_ALL)
 add_subdirectory(botan EXCLUDE_FROM_ALL)
 add_subdirectory(pika EXCLUDE_FROM_ALL)
+add_subdirectory(protobuf EXCLUDE_FROM_ALL)
 add_subdirectory(turtle EXCLUDE_FROM_ALL)
 
 include(ExternalProject)
