@@ -19,3 +19,6 @@
 [submodule "bunsan/crypto"]
 	path = bunsan/crypto
 	url = https://github.com/bunsanorg/crypto.git
+[submodule "bunsan/pm"]
+	path = bunsan/pm
+	url = https://github.com/bunsanorg/pm.git
