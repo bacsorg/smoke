@@ -17,14 +17,10 @@ if(UNIX)
             variant=release
             link=shared
             threading=multi
+            --without-coroutine
     )
 elseif(WIN32)
-    set(boost_configure
-        bootstrap.bat
-            --with-toolset=gcc
-            --with-icu
-            --with-python=${PYTHON_EXECUTABLE}
-    )
+    set(boost_configure bootstrap.bat)
     set(boost_b2
         ./b2
             --prefix=${BUNSAN_SMOKE_ROOT}
@@ -33,6 +29,7 @@ elseif(WIN32)
             variant=release
             link=shared
             threading=multi
+            --without-coroutine
     )
 else()
     message(SEND_ERROR "Unknown platform")
