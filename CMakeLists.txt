@@ -41,7 +41,9 @@ macro(add_bunsan_project name path)
         DEPENDS
             boost
             turtle
+            ${ARGN}
     )
 endmacro()
 
-add_bunsan_project(bunsan_test bunsan/test)
+add_bunsan_project(bunsan_cmake bunsan/cmake)
+add_bunsan_project(bunsan_test bunsan/test bunsan_cmake)
