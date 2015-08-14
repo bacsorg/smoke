@@ -32,6 +32,7 @@ macro(add_bunsan_project name path)
         DOWNLOAD_COMMAND ""
         SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/${path}
         CMAKE_ARGS
+            -DENABLE_TESTS=OFF
             -DCMAKE_INSTALL_PREFIX=${BUNSAN_SMOKE_ROOT}
             -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
             -DBOOST_ROOT=${BUNSAN_SMOKE_ROOT}
