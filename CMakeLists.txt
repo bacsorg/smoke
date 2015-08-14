@@ -53,4 +53,8 @@ add_bunsan_project(bunsan_process bunsan/process bunsan_common)
 add_bunsan_project(bunsan_protobuf bunsan/protobuf protobuf bunsan_common)
 add_bunsan_project(bunsan_utility bunsan/utility bunsan_process)
 add_bunsan_project(bunsan_crypto bunsan/crypto botan bunsan_common)
-add_bunsan_project(bunsan_pm bunsan/pm bunsan_crypto bunsan_utility)
+add_bunsan_project(bunsan_pm bunsan/pm
+    bunsan_common_python
+    bunsan_crypto
+    bunsan_utility
+)
