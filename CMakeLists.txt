@@ -14,6 +14,8 @@ endif()
 
 if(UNIX)
     set(BUNSAN_SMOKE_NOOP true)
+elseif(MINGW)
+    set(BUNSAN_SMOKE_NOOP sleep 0)
 elseif(WIN32)
     set(BUNSAN_SMOKE_NOOP call)
 else()
