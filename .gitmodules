@@ -37,3 +37,6 @@
 [submodule "bunsan/bacs/problem_plugins/single"]
 	path = bunsan/bacs/problem_plugins/single
 	url = https://github.com/bunsanorg/bacs_problem_single.git
+[submodule "bunsan/bacs/problems"]
+	path = bunsan/bacs/problems
+	url = https://github.com/bunsanorg/bacs_problems.git

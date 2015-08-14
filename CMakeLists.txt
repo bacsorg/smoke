@@ -75,3 +75,6 @@ add_bunsan_project(bunsan_bacs_problem_single
                    bunsan/bacs/problem_plugins/single
     bunsan_bacs_problem
 )
+add_bunsan_project(bunsan_bacs_problems bunsan/bacs/problems
+    bunsan_bacs_problem_single
+)
