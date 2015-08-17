@@ -49,6 +49,7 @@ ExternalProject_Add_Step(boost python3
         ${CMAKE_COMMAND}
             -DBOOST_SOURCE_ROOT=<SOURCE_DIR>
             -P ${CMAKE_CURRENT_LIST_DIR}/patch.cmake
+    DEPENDEES configure
     DEPENDERS build
 )
 

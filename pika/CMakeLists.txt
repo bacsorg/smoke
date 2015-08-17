@@ -21,5 +21,6 @@ ExternalProject_Add(pika
 )
 ExternalProject_Add_Step(pika preinstall
     COMMAND ${CMAKE_COMMAND} -E make_directory ${PIKA_PYTHON_PATH}
+    DEPENDEES build
     DEPENDERS install
 )
