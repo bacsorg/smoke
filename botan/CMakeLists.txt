@@ -38,3 +38,12 @@ ExternalProject_Add(botan
     BUILD_COMMAND ${CMAKE_MAKE_PROGRAM} ${botan_make_args}
     INSTALL_COMMAND ${CMAKE_MAKE_PROGRAM} ${botan_make_args} install
 )
+if(WIN32)
+    ExternalProject_Add_Step(botan post_install
+        COMMAND
+            ${CMAKE_COMMAND}
+                -DBUNSAN_SMOKE_ROOT=${BUNSAN_SMOKE_ROOT}
+                -P ${CMAKE_CURRENT_LIST_DIR}/win32_post_install.cmake
+        DEPENDEES install
+    )
+endif()

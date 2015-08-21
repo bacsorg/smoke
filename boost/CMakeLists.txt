@@ -73,6 +73,15 @@ ExternalProject_Add_Step(boost_core python3
     DEPENDEES configure
     DEPENDERS build
 )
+if(WIN32)
+    ExternalProject_Add_Step(boost_core post_install
+        COMMAND
+            ${CMAKE_COMMAND}
+                -DBUNSAN_SMOKE_ROOT=${BUNSAN_SMOKE_ROOT}
+                -P ${CMAKE_CURRENT_LIST_DIR}/win32_post_install.cmake
+        DEPENDEES install
+    )
+endif()
 
 ExternalProject_Add(boost_dll
     GIT_REPOSITORY https://github.com/apolukhin/Boost.DLL.git
