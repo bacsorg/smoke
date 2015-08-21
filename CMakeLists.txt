@@ -15,6 +15,7 @@ endif()
 set(BUNSAN_SMOKE_NOOP ${CMAKE_COMMAND} -E echo_append)
 set(BUNSAN_SMOKE_ROOT ${CMAKE_BINARY_DIR}/root/usr)
 
+add_subdirectory(python)
 add_subdirectory(boost EXCLUDE_FROM_ALL)
 add_subdirectory(botan EXCLUDE_FROM_ALL)
 add_subdirectory(pika EXCLUDE_FROM_ALL)

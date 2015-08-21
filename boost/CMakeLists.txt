@@ -1,6 +1,14 @@
 project(bunsan_bacs_smoke_boost)
 
-bunsan_find_python2()
+if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+    set(boost_address_model 64)
+    set(boost_win_cxxflags "-DMS_WIN64")
+elseif(CMAKE_SIZEOF_VOID_P EQUAL 4)
+    set(boost_address_model 32)
+    set(boost_win_cxxflags)
+else()
+    message(SEND_ERROR "Unknown platform")
+endif()
 
 if(UNIX)
     set(boost_configure
@@ -17,6 +25,7 @@ if(UNIX)
             variant=release
             link=shared
             threading=multi
+            address-model=${boost_address_model}
             --without-coroutine
     )
     set(boost_include ${BUNSAN_SMOKE_ROOT}/include)
@@ -30,6 +39,8 @@ elseif(WIN32)
             variant=release
             link=shared
             threading=multi
+            address-model=${boost_address_model}
+            cxxflags=${boost_win_cxxflags}
             --without-coroutine
     )
     set(boost_include ${BUNSAN_SMOKE_ROOT}/include/boost-1_58)
@@ -50,6 +61,14 @@ ExternalProject_Add_Step(boost_core python3
     COMMAND
         ${CMAKE_COMMAND}
             -DBOOST_SOURCE_ROOT=<SOURCE_DIR>
+            -DBUNSAN_SMOKE_PYTHON2_VERSION=${BUNSAN_SMOKE_PYTHON2_VERSION}
+            -DBUNSAN_SMOKE_PYTHON2_PREFIX=${BUNSAN_SMOKE_PYTHON2_PREFIX}
+            -DBUNSAN_SMOKE_PYTHON2_INCLUDE_DIR=${BUNSAN_SMOKE_PYTHON2_INCLUDE_DIR}
+            -DBUNSAN_SMOKE_PYTHON2_LIBRARY_DIR=${BUNSAN_SMOKE_PYTHON2_LIBRARY_DIR}
+            -DBUNSAN_SMOKE_PYTHON3_VERSION=${BUNSAN_SMOKE_PYTHON3_VERSION}
+            -DBUNSAN_SMOKE_PYTHON3_PREFIX=${BUNSAN_SMOKE_PYTHON3_PREFIX}
+            -DBUNSAN_SMOKE_PYTHON3_INCLUDE_DIR=${BUNSAN_SMOKE_PYTHON3_INCLUDE_DIR}
+            -DBUNSAN_SMOKE_PYTHON3_LIBRARY_DIR=${BUNSAN_SMOKE_PYTHON3_LIBRARY_DIR}
             -P ${CMAKE_CURRENT_LIST_DIR}/patch.cmake
     DEPENDEES configure
     DEPENDERS build

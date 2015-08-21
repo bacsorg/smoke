@@ -1,7 +1,5 @@
 project(bunsan_bacs_smoke_botan)
 
-bunsan_find_python()
-
 if(UNIX)
     set(botan_args)
 elseif(MINGW)
@@ -18,7 +16,7 @@ if(MINGW)
     list(APPEND botan_make_args
         "COPY=copy"
         "LN=${CMAKE_COMMAND} -E copy_if_different"
-        "SCRIPTS_DIR=${PYTHON_EXECUTABLE} src/scripts"
+        "SCRIPTS_DIR=${BUNSAN_SMOKE_PYTHON2_EXECUTABLE} src/scripts"
     )
 endif()
 
@@ -31,7 +29,7 @@ ExternalProject_Add(botan
         ${CMAKE_COMMAND}
             -DBOTAN_SOURCE_ROOT=<SOURCE_DIR>
             -P ${CMAKE_CURRENT_LIST_DIR}/patch.cmake
-    CONFIGURE_COMMAND ${PYTHON_EXECUTABLE} configure.py
+    CONFIGURE_COMMAND ${BUNSAN_SMOKE_PYTHON2_EXECUTABLE} configure.py
         --prefix=${BUNSAN_SMOKE_ROOT}
         --cc=gcc
         --link-method=copy
