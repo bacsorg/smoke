@@ -33,6 +33,8 @@ macro(add_bunsan_project name path)
             -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
 
             -DENABLE_TESTS=OFF
+            -DPython_ADDITIONAL_VERSIONS=3.5
+            -DCMAKE_CXX_FLAGS=-D_hypot=hypot
         DEPENDS
             boost
             turtle
