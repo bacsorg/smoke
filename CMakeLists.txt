@@ -61,12 +61,13 @@ add_bunsan_project(bunsan_broker bunsan/broker
     bunsan_protobuf
 )
 add_bunsan_project(bunsan_bacs_common bunsan/bacs/common
-    bunsan_cmake
+    bunsan_common
     protobuf
 )
 add_bunsan_project(bunsan_bacs_problem bunsan/bacs/problem
     bunsan_pm
     bunsan_protobuf
+    bunsan_bacs_common
 )
 add_bunsan_project(bunsan_bacs_problem_single
                    bunsan/bacs/problem_plugins/single
