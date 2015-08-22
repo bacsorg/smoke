@@ -11,4 +11,5 @@
   depending on your OS architecture) to `PATH`, for example
   `C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin` or
   `C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\amd64`
-- [MSYS2](http://msys2.github.io/)
+- [MSYS2](http://msys2.github.io/), if you install it to non-standard location,
+  set `MSYS_BIN` manually, e.g. `cmake -DMSYS_BIN=C:\path\to\msys\bin`

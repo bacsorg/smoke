@@ -14,7 +14,7 @@ elseif(MINGW)
             C:/msys32/bin
     )
     if(NOT MSYS_BIN)
-        message(SEND_ERROR "Unable to find MSYS")
+        message(SEND_ERROR "Unable to find MSYS, set MSYS_BIN manually")
     endif()
     set(env ${MSYS_BIN}/sh.exe ${CMAKE_CURRENT_LIST_DIR}/msys_run.sh)
     set(pacman ${env} ${MSYS_BIN}/pacman.exe)
