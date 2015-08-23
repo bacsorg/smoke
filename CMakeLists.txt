@@ -26,6 +26,7 @@ add_subdirectory(zlib)
 # libraries
 add_subdirectory(boost)
 add_subdirectory(botan)
+add_subdirectory(cppcms)
 add_subdirectory(pika)
 add_subdirectory(protobuf)
 add_subdirectory(turtle)
