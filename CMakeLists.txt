@@ -22,6 +22,7 @@ add_subdirectory(python)
 # libraries
 add_subdirectory(boost)
 add_subdirectory(botan)
+add_subdirectory(pcre)
 add_subdirectory(pika)
 add_subdirectory(protobuf)
 add_subdirectory(turtle)
