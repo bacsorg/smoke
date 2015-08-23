@@ -19,10 +19,13 @@ set(BUNSAN_SMOKE_ROOT ${CMAKE_BINARY_DIR}/root/usr)
 add_subdirectory(msys)
 add_subdirectory(python)
 
+# base libraries
+add_subdirectory(pcre)
+add_subdirectory(zlib)
+
 # libraries
 add_subdirectory(boost)
 add_subdirectory(botan)
-add_subdirectory(pcre)
 add_subdirectory(pika)
 add_subdirectory(protobuf)
 add_subdirectory(turtle)
