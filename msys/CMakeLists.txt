@@ -15,7 +15,15 @@ elseif(MINGW)
     endif()
     set(MSYS_ENV ${MSYS_BIN}/sh.exe ${CMAKE_CURRENT_LIST_DIR}/run.sh CACHE INTERNAL "")
     set(MSYS_PACMAN ${MSYS_ENV} ${MSYS_BIN}/pacman.exe CACHE INTERNAL "")
-    set(BUNSAN_SMOKE_MAKE ${MSYS_ENV} ${CMAKE_MAKE_PROGRAM} CACHE INTERNAL "")
+    set(BUNSAN_SMOKE_MAKE ${MSYS_ENV} ${CMAKE_MAKE_PROGRAM}
+        "MAKE=${CMAKE_MAKE_PROGRAM}"
+        "EGREP=${MSYS_BIN}/grep -E"
+        "FGREP=${MSYS_BIN}/grep -F"
+        "GREP=${MSYS_BIN}/grep"
+        "INSTALL=${MSYS_BIN}/install -c"
+        "MKDIR_P=${MSYS_BIN}/mkdir -p"
+        "SED=${MSYS_BIN}/sed"
+        CACHE INTERNAL "")
     set(BUNSAN_SMOKE_SH ${MSYS_ENV} ${MSYS_BIN}/sh.exe CACHE INTERNAL "")
 else()
     message("Unsupported platform")
