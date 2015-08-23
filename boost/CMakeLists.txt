@@ -1,5 +1,3 @@
-project(bunsan_bacs_smoke_boost)
-
 if(CMAKE_SIZEOF_VOID_P EQUAL 8)
     set(boost_address_model 64)
     set(boost_win_cxxflags "-DMS_WIN64")

@@ -1,5 +1,3 @@
-project(bunsan_bacs_smoke_protobuf)
-
 if(UNIX)
     set(make ${BUNSAN_SMOKE_MAKE})
 elseif(MINGW)

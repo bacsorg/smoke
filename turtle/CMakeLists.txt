@@ -1,5 +1,3 @@
-project(bunsan_bacs_smoke_turtle)
-
 include(ExternalProject)
 ExternalProject_Add(turtle
     URL http://downloads.sourceforge.net/project/turtle/turtle/1.2.7/turtle-1.2.7.tar.bz2

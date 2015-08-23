@@ -1,5 +1,3 @@
-project(bunsan_bacs_smoke_botan)
-
 if(UNIX)
     set(botan_args)
 elseif(MINGW)

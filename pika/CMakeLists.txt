@@ -1,5 +1,3 @@
-project(bunsan_bacs_smoke_pika)
-
 set(PIKA_PREFIX ${BUNSAN_SMOKE_PYTHON3_INSTALL_PREFIX})
 set(PIKA_PYTHON_PATH ${BUNSAN_SMOKE_PYTHON3_INSTALL_PATH})
 bunsan_smoke_to_native_python_path(PIKA_PREFIX PIKA_PYTHON_PATH)
