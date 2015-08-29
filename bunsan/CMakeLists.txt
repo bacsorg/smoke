@@ -25,6 +25,7 @@ add_bunsan_project(bunsan_common bunsan/common bunsan_test)
 add_bunsan_project(bunsan_common_python bunsan/common_python bunsan_common)
 add_bunsan_project(bunsan_process bunsan/process bunsan_common)
 add_bunsan_project(bunsan_protobuf bunsan/protobuf protobuf bunsan_common)
+add_bunsan_project(bunsan_rpc bunsan/rpc grpc bunsan_protobuf)
 add_bunsan_project(bunsan_utility bunsan/utility bunsan_process)
 add_bunsan_project(bunsan_crypto bunsan/crypto botan bunsan_common)
 add_bunsan_project(bunsan_pm bunsan/pm

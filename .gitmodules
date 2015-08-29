@@ -40,3 +40,6 @@
 [submodule "bunsan/bacs/problems"]
 	path = bunsan/bacs/problems
 	url = https://github.com/bunsanorg/bacs_problems.git
+[submodule "bunsan/rpc"]
+	path = bunsan/rpc
+	url = https://github.com/bunsanorg/rpc.git
