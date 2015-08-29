@@ -27,6 +27,10 @@ if(ENABLE_WEB)
     add_subdirectory(zlib)
 endif()
 
+# Google
+add_subdirectory(protobuf)
+add_subdirectory(grpc)
+
 # libraries
 add_subdirectory(boost)
 add_subdirectory(botan)
@@ -34,7 +38,6 @@ if(ENABLE_WEB)
     add_subdirectory(cppcms)
 endif()
 add_subdirectory(pika)
-add_subdirectory(protobuf)
 add_subdirectory(turtle)
 
 add_subdirectory(bunsan)
