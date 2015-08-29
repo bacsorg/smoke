@@ -19,38 +19,38 @@ macro(add_bunsan_project name path)
     )
 endmacro()
 
-add_bunsan_project(bunsan_cmake bunsan/cmake)
-add_bunsan_project(bunsan_test bunsan/test bunsan_cmake)
-add_bunsan_project(bunsan_common bunsan/common bunsan_test)
-add_bunsan_project(bunsan_common_python bunsan/common_python bunsan_common)
-add_bunsan_project(bunsan_process bunsan/process bunsan_common)
-add_bunsan_project(bunsan_protobuf bunsan/protobuf protobuf bunsan_common)
-add_bunsan_project(bunsan_rpc bunsan/rpc grpc bunsan_protobuf)
-add_bunsan_project(bunsan_utility bunsan/utility bunsan_process)
-add_bunsan_project(bunsan_crypto bunsan/crypto botan bunsan_common)
-add_bunsan_project(bunsan_pm bunsan/pm
+add_bunsan_project(bunsan_cmake cmake)
+add_bunsan_project(bunsan_test test bunsan_cmake)
+add_bunsan_project(bunsan_common common bunsan_test)
+add_bunsan_project(bunsan_common_python common_python bunsan_common)
+add_bunsan_project(bunsan_process process bunsan_common)
+add_bunsan_project(bunsan_protobuf protobuf protobuf bunsan_common)
+add_bunsan_project(bunsan_rpc rpc grpc bunsan_protobuf)
+add_bunsan_project(bunsan_utility utility bunsan_process)
+add_bunsan_project(bunsan_crypto crypto botan bunsan_common)
+add_bunsan_project(bunsan_pm pm
     bunsan_common_python
     bunsan_crypto
     bunsan_utility
 )
-add_bunsan_project(bunsan_broker bunsan/broker
+add_bunsan_project(bunsan_broker broker
     bunsan_crypto
     bunsan_pm
     bunsan_protobuf
 )
-add_bunsan_project(bunsan_bacs_common bunsan/bacs/common
+add_bunsan_project(bunsan_bacs_common bacs/common
     bunsan_common
     protobuf
 )
-add_bunsan_project(bunsan_bacs_problem bunsan/bacs/problem
+add_bunsan_project(bunsan_bacs_problem bacs/problem
     bunsan_pm
     bunsan_protobuf
     bunsan_bacs_common
 )
 add_bunsan_project(bunsan_bacs_problem_single
-                   bunsan/bacs/problem_plugins/single
+                   bacs/problem_plugins/single
     bunsan_bacs_problem
 )
-add_bunsan_project(bunsan_bacs_problems bunsan/bacs/problems
+add_bunsan_project(bunsan_bacs_problems bacs/problems
     bunsan_bacs_problem_single
 )
