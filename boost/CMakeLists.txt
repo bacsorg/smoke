@@ -13,7 +13,7 @@ if(UNIX)
         ./bootstrap.sh
             --with-toolset=gcc
             --with-icu
-            --with-python=${PYTHON_EXECUTABLE}
+            --with-python=${BUNSAN_SMOKE_PYTHON2_EXECUTABLE}
     )
     set(boost_b2
         ./b2
