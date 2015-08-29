@@ -15,18 +15,24 @@ endif()
 set(BUNSAN_SMOKE_NOOP ${CMAKE_COMMAND} -E echo_append)
 set(BUNSAN_SMOKE_ROOT ${CMAKE_BINARY_DIR}/root/usr)
 
+option(ENABLE_WEB "Enable CppCMS-based Web" OFF)
+
 # environment
 add_subdirectory(msys)
 add_subdirectory(python)
 
 # base libraries
-add_subdirectory(pcre)
-add_subdirectory(zlib)
+if(ENABLE_WEB)
+    add_subdirectory(pcre)
+    add_subdirectory(zlib)
+endif()
 
 # libraries
 add_subdirectory(boost)
 add_subdirectory(botan)
-add_subdirectory(cppcms)
+if(ENABLE_WEB)
+    add_subdirectory(cppcms)
+endif()
 add_subdirectory(pika)
 add_subdirectory(protobuf)
 add_subdirectory(turtle)
