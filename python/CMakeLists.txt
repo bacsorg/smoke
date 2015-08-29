@@ -18,7 +18,7 @@ macro(bunsan_smoke_setup_python pyver)
     get_filename_component(BUNSAN_SMOKE_PYTHON${pyver}_LIBRARY_DIR
                           ${PYTHON_LIBRARY} DIRECTORY CACHE)
     get_filename_component(BUNSAN_SMOKE_PYTHON${pyver}_PREFIX
-                           ${BUNSAN_SMOKE_PYTHON${pyver}_INCLUDE_DIR} DIRECTORY CACHE)
+                           ${BUNSAN_SMOKE_PYTHON${pyver}_LIBRARY_DIR} DIRECTORY CACHE)
     if(UNIX)
         set(BUNSAN_SMOKE_PYTHON${pyver}_INSTALL_PREFIX
             ${BUNSAN_SMOKE_ROOT}
