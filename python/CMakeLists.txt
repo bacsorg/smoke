@@ -7,10 +7,6 @@ macro(bunsan_smoke_setup_python pyver)
         ${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}
         CACHE INTERNAL ""
     )
-    set(BUNSAN_SMOKE_PYTHON${pyver}_WINDIR
-        Python${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR}
-        CACHE INTERNAL ""
-    )
     set(BUNSAN_SMOKE_PYTHON${pyver}_INCLUDE_DIR
         ${PYTHON_INCLUDE_DIR}
         CACHE INTERNAL ""
@@ -20,26 +16,29 @@ macro(bunsan_smoke_setup_python pyver)
     get_filename_component(BUNSAN_SMOKE_PYTHON${pyver}_PREFIX
                            ${BUNSAN_SMOKE_PYTHON${pyver}_LIBRARY_DIR} DIRECTORY CACHE)
     if(UNIX)
-        set(BUNSAN_SMOKE_PYTHON${pyver}_INSTALL_PREFIX
-            ${BUNSAN_SMOKE_ROOT}
-            CACHE INTERNAL ""
-        )
-        set(BUNSAN_SMOKE_PYTHON${pyver}_INSTALL_PATH
-            ${BUNSAN_SMOKE_PYTHON${pyver}_PREFIX}/lib/python${BUNSAN_SMOKE_PYTHON${pyver}_VERSION}/site-packages
-            CACHE INTERNAL ""
-        )
+        set(BUNSAN_SMOKE_PYTHON${pyver}_SYSDIR ""
+            CACHE INTERNAL "")
+        set(BUNSAN_SMOKE_PYTHON${pyver}_SITEDIR
+            lib/python${BUNSAN_SMOKE_PYTHON${pyver}_VERSION}/site-packages
+            CACHE INTERNAL "")
     elseif(WIN32)
-        set(BUNSAN_SMOKE_PYTHON${pyver}_INSTALL_PREFIX
-            ${BUNSAN_SMOKE_ROOT}/${BUNSAN_SMOKE_PYTHON${pyver}_WINDIR}
-            CACHE INTERNAL ""
-        )
-        set(BUNSAN_SMOKE_PYTHON${pyver}_INSTALL_PATH
-            ${BUNSAN_SMOKE_PYTHON${pyver}_PREFIX}/Lib/site-packages
-            CACHE INTERNAL ""
-        )
+        set(BUNSAN_SMOKE_PYTHON${pyver}_SYSDIR
+            Python${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR}
+            CACHE INTERNAL "")
+        set(BUNSAN_SMOKE_PYTHON${pyver}_SITEDIR
+            Lib/site-packages
+            CACHE INTERNAL "")
     else()
         message(SEND_ERROR "Unknown platform")
     endif()
+    set(BUNSAN_SMOKE_PYTHON${pyver}_INSTALL_PREFIX
+        ${BUNSAN_SMOKE_ROOT}/${BUNSAN_SMOKE_PYTHON${pyver}_SYSDIR}
+        CACHE INTERNAL ""
+    )
+    set(BUNSAN_SMOKE_PYTHON${pyver}_INSTALL_PATH
+        ${BUNSAN_SMOKE_PYTHON${pyver}_INSTALL_PREFIX}/${BUNSAN_SMOKE_PYTHON${pyver}_SITEDIR}
+        CACHE INTERNAL ""
+    )
 endmacro()
 
 bunsan_find_python2()
