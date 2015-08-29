@@ -32,6 +32,7 @@ ExternalProject_Add(botan
         --cc=gcc
         --link-method=copy
         --enable-shared
+        --dirty-tree
         ${botan_args}
     BUILD_COMMAND ${CMAKE_MAKE_PROGRAM} ${botan_make_args}
     INSTALL_COMMAND ${CMAKE_MAKE_PROGRAM} ${botan_make_args} install
