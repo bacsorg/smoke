@@ -24,8 +24,8 @@ add_subdirectory(python)
 # base libraries
 if(ENABLE_WEB)
     add_subdirectory(pcre)
-    add_subdirectory(zlib)
 endif()
+add_subdirectory(zlib)
 
 # Google
 add_subdirectory(protobuf)

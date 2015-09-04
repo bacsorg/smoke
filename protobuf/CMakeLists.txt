@@ -8,4 +8,5 @@ ExternalProject_Add(protobuf
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         -DBUILD_TESTING=OFF
         -DBUILD_SHARED_LIBS=ON
+    DEPENDS zlib
 )
