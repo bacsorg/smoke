@@ -1,7 +1,13 @@
 if(UNIX)
-    set(BUNSAN_SMOKE_MAKE ${CMAKE_MAKE_PROGRAM} CACHE INTERNAL "")
-    set(BUNSAN_SMOKE_SH sh CACHE INTERNAL "")
+    set(USE_MSYS_DEFAULT OFF)
 elseif(MINGW)
+    set(USE_MSYS_DEFAULT ON)
+else()
+    message("Unsupported platform")
+endif()
+option(USE_MSYS ${USE_MSYS_DEFAULT} "Use MSYS for system shell")
+
+if(USE_MSYS)
     find_path(MSYS_BIN
         NAMES pacman.exe
         PATHS
@@ -26,5 +32,6 @@ elseif(MINGW)
         CACHE INTERNAL "")
     set(BUNSAN_SMOKE_SH ${MSYS_ENV} ${MSYS_BIN}/sh.exe CACHE INTERNAL "")
 else()
-    message("Unsupported platform")
+    set(BUNSAN_SMOKE_MAKE ${CMAKE_MAKE_PROGRAM} CACHE INTERNAL "")
+    set(BUNSAN_SMOKE_SH sh CACHE INTERNAL "")
 endif()
