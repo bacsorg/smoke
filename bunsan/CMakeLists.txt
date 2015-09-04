@@ -4,14 +4,9 @@ macro(add_bunsan_project name path)
         DOWNLOAD_COMMAND ""
         SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/${path}
         CMAKE_ARGS
-            -DCMAKE_PREFIX_PATH=${BUNSAN_SMOKE_ROOT}
-            -DCMAKE_INSTALL_PREFIX=${BUNSAN_SMOKE_ROOT}
-            -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
-
+            ${BUNSAN_SMOKE_CMAKE_ARGS}
             -DENABLE_TESTS=OFF
             -DENABLE_WEB=${ENABLE_WEB}
-            -DPython_ADDITIONAL_VERSIONS=3.5
-            -DCMAKE_CXX_FLAGS=-D_hypot=hypot
         DEPENDS
             boost
             turtle
