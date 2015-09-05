@@ -29,6 +29,7 @@ if(USE_MSYS)
         "INSTALL=${MSYS_BIN}/install -c"
         "MKDIR_P=${MSYS_BIN}/mkdir -p"
         "SED=${MSYS_BIN}/sed"
+        "PERL=${MSYS_BIN}/perl"
         CACHE INTERNAL "")
     set(BUNSAN_SMOKE_SH ${MSYS_ENV} ${MSYS_BIN}/sh.exe CACHE INTERNAL "")
     set(BUNSAN_SMOKE_PERL ${MSYS_ENV} ${MSYS_BIN}/perl.exe CACHE INTERNAL "")
