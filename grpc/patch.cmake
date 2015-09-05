@@ -17,3 +17,9 @@ string(REPLACE
        "#if defined(NOMINMAX)\n#undef NOMINMAX\n#endif\n#include <windows.h>"
        PORT_PLATFORM_H "${PORT_PLATFORM_H}")
 file(WRITE ${GRPC_SOURCE_ROOT}/include/grpc/support/port_platform.h "${PORT_PLATFORM_H}")
+
+file(READ ${GRPC_SOURCE_ROOT}/src/core/iomgr/sockaddr_win32.h SOCKADDR_WIN32_H)
+string(REPLACE
+       "__MINGW32__" "__MINGW32_TURNED_OFF_BY_BUNSAN_SMOKE__"
+       SOCKADDR_WIN32_H "${SOCKADDR_WIN32_H}")
+file(WRITE ${GRPC_SOURCE_ROOT}/src/core/iomgr/sockaddr_win32.h "${SOCKADDR_WIN32_H}")

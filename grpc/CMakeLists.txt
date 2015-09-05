@@ -1,3 +1,15 @@
+set(make_parameters
+    "CFLAGS=-std=c11 -D_WIN32_WINNT=0x0600 -I${BUNSAN_SMOKE_ROOT}/include"
+    "CXXFLAGS=-std=c++11 -D_WIN32_WINNT=0x0600 -I${BUNSAN_SMOKE_ROOT}/include"
+
+    HAS_PKG_CONFIG=false
+    HAS_SYSTEM_OPENSSL_ALPN=true
+    HAS_SYSTEM_ZLIB=true
+    HAS_SYSTEM_PROTOBUF=true
+
+    prefix=${BUNSAN_SMOKE_ROOT}
+)
+
 include(ExternalProject)
 ExternalProject_Add(grpc
     URL https://github.com/grpc/grpc/archive/release-0_10_2.tar.gz
@@ -7,7 +19,7 @@ ExternalProject_Add(grpc
         -DGRPC_SOURCE_ROOT=<SOURCE_DIR>
         -P ${CMAKE_CURRENT_LIST_DIR}/patch.cmake
     CONFIGURE_COMMAND ${BUNSAN_SMOKE_NOOP}
-    BUILD_COMMAND ${BUNSAN_SMOKE_MAKE} CFLAGS=-D_WIN32_WINNT=0x0600 prefix=${BUNSAN_SMOKE_ROOT}
-    INSTALL_COMMAND ${BUNSAN_SMOKE_MAKE} install prefix=${BUNSAN_SMOKE_ROOT}
-    DEPENDS openssl protobuf
+    BUILD_COMMAND ${BUNSAN_SMOKE_MAKE} ${make_parameters}
+    INSTALL_COMMAND ${BUNSAN_SMOKE_MAKE} ${make_parameters} install
+    DEPENDS openssl protobuf zlib
 )
