@@ -35,6 +35,7 @@ add_subdirectory(msys)
 add_subdirectory(python)
 
 # base libraries
+add_subdirectory(openssl)
 if(ENABLE_WEB)
     add_subdirectory(pcre)
 endif()
