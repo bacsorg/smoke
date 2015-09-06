@@ -1,6 +1,13 @@
+set(compiler_flags_
+    -D_WIN32_WINNT=0x0600
+    -I${BUNSAN_SMOKE_ROOT}/include
+)
+string(REPLACE ";" " " compiler_flags "${compiler_flags_}")
+
 set(make_parameters
-    "CFLAGS=-std=c11 -D_WIN32_WINNT=0x0600 -I${BUNSAN_SMOKE_ROOT}/include"
-    "CXXFLAGS=-std=c++11 -D_WIN32_WINNT=0x0600 -I${BUNSAN_SMOKE_ROOT}/include"
+    "CFLAGS=-std=c11 ${compiler_flags}"
+    "CXXFLAGS=-std=c++11 ${compiler_flags}"
+    "LDFLAGS=-L${BUNSAN_SMOKE_ROOT}/lib"
 
     HAS_PKG_CONFIG=false
     HAS_SYSTEM_OPENSSL_ALPN=true
