@@ -1,5 +1,5 @@
 if(UNIX)
-    set(compiler gcc)
+    set(compiler linux-elf)
 elseif(WIN32)
     if(CMAKE_SIZEOF_VOID_P EQUAL 8)
         set(compiler mingw64)
@@ -32,6 +32,7 @@ ExternalProject_Add(openssl
     CONFIGURE_COMMAND ${BUNSAN_SMOKE_PERL} Configure ${compiler}
         no-asm
         shared
+        zlib-dynamic
         --prefix=${BUNSAN_SMOKE_ROOT}
     BUILD_COMMAND ${BUNSAN_SMOKE_MAKE} ${make_parameters}
     INSTALL_COMMAND ${BUNSAN_SMOKE_MAKE} ${make_parameters} install
