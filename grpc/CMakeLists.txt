@@ -5,6 +5,11 @@ set(compiler_flags_
 string(REPLACE ";" " " compiler_flags "${compiler_flags_}")
 
 set(make_parameters
+    "AR=${CMAKE_AR}"
+    "STRIP=${CMAKE_STRIP}"
+    "LD=${CMAKE_C_COMPILER}"
+    "LDXX=${CMAKE_CXX_COMPILER}"
+
     "CFLAGS=-std=c11 ${compiler_flags}"
     "CXXFLAGS=-std=c++11 ${compiler_flags}"
     "LDFLAGS=-L${BUNSAN_SMOKE_ROOT}/lib"
@@ -16,6 +21,9 @@ set(make_parameters
 
     prefix=${BUNSAN_SMOKE_ROOT}
 )
+if(MINGW)
+    list(APPEND make_parameters SYSTEM=MINGW32)
+endif()
 
 include(ExternalProject)
 ExternalProject_Add(grpc
