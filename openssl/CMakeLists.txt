@@ -12,6 +12,18 @@ else()
     message(SEND_ERROR "Unknown platform")
 endif()
 
+string(REGEX REPLACE "gcc(\\.exe)?$" "" cross_compile "${CMAKE_C_COMPILER}")
+if(cross_compile MATCHES "-$")
+    set(make_parameters
+        "CROSS_COMPILE=${cross_compile}"
+    )
+else()
+    set(make_parameters)
+endif()
+list(APPEND make_parameters
+    "AR=${CMAKE_AR} r"
+)
+
 include(ExternalProject)
 ExternalProject_Add(openssl
     URL ftp://ftp.openssl.org/source/openssl-1.0.2d.tar.gz
@@ -21,6 +33,6 @@ ExternalProject_Add(openssl
         no-asm
         shared
         --prefix=${BUNSAN_SMOKE_ROOT}
-    BUILD_COMMAND ${BUNSAN_SMOKE_MAKE}
-    INSTALL_COMMAND ${BUNSAN_SMOKE_MAKE} install
+    BUILD_COMMAND ${BUNSAN_SMOKE_MAKE} ${make_parameters}
+    INSTALL_COMMAND ${BUNSAN_SMOKE_MAKE} ${make_parameters} install
 )
