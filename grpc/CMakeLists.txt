@@ -41,3 +41,11 @@ ExternalProject_Add(grpc
         -P ${CMAKE_CURRENT_LIST_DIR}/install.cmake
     DEPENDS openssl protobuf zlib
 )
+if(WIN32)
+    ExternalProject_Add_Step(grpc post_install
+        COMMAND ${CMAKE_COMMAND}
+            -DBUNSAN_SMOKE_ROOT=${BUNSAN_SMOKE_ROOT}
+            -P ${CMAKE_CURRENT_LIST_DIR}/win32_post_install.cmake
+        DEPENDEES install
+    )
+endif()
