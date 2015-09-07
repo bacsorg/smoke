@@ -23,10 +23,9 @@ ExternalProject_Add(botan
     GIT_REPOSITORY https://github.com/randombit/botan.git
     GIT_TAG 8e19ecf11c
     BUILD_IN_SOURCE 1
-    PATCH_COMMAND
-        ${CMAKE_COMMAND}
-            -DBOTAN_SOURCE_ROOT=<SOURCE_DIR>
-            -P ${CMAKE_CURRENT_LIST_DIR}/patch.cmake
+    PATCH_COMMAND ${CMAKE_COMMAND}
+        -DBOTAN_SOURCE_ROOT=<SOURCE_DIR>
+        -P ${CMAKE_CURRENT_LIST_DIR}/patch.cmake
     CONFIGURE_COMMAND ${BUNSAN_SMOKE_PYTHON2_EXECUTABLE} configure.py
         --prefix=${BUNSAN_SMOKE_ROOT}
         --cc=gcc
@@ -39,10 +38,9 @@ ExternalProject_Add(botan
 )
 if(WIN32)
     ExternalProject_Add_Step(botan post_install
-        COMMAND
-            ${CMAKE_COMMAND}
-                -DBUNSAN_SMOKE_ROOT=${BUNSAN_SMOKE_ROOT}
-                -P ${CMAKE_CURRENT_LIST_DIR}/win32_post_install.cmake
+        COMMAND ${CMAKE_COMMAND}
+            -DBUNSAN_SMOKE_ROOT=${BUNSAN_SMOKE_ROOT}
+            -P ${CMAKE_CURRENT_LIST_DIR}/win32_post_install.cmake
         DEPENDEES install
     )
 endif()
