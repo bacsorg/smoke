@@ -43,3 +43,6 @@
 [submodule "bunsan/rpc"]
 	path = bunsan/rpc
 	url = https://github.com/bunsanorg/rpc.git
+[submodule "bunsan/bacs/archive"]
+	path = bunsan/bacs/archive
+	url = https://github.com/bunsanorg/bacs_archive.git
