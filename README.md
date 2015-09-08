@@ -5,6 +5,8 @@
 
 Build under MSVC is not supported and unlikely will be (only if someone is willing to contribute).
 
+Parallel build is not supported, do not use `-j` flag to `make`.
+
 # Linux instructions
 
 ## Prepare machine
