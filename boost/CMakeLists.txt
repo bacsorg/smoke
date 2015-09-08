@@ -1,9 +1,13 @@
 if(CMAKE_SIZEOF_VOID_P EQUAL 8)
     set(boost_address_model 64)
-    set(boost_win_cxxflags "-DMS_WIN64")
+    if(WIN32)
+        set(boost_cxxflags "-DMS_WIN64")
+    else()
+        set(boost_cxxflags)
+    endif()
 elseif(CMAKE_SIZEOF_VOID_P EQUAL 4)
     set(boost_address_model 32)
-    set(boost_win_cxxflags)
+    set(boost_cxxflags)
 else()
     message(SEND_ERROR "Unknown platform")
 endif()
@@ -15,36 +19,29 @@ if(UNIX)
             --with-icu
             --with-python=${BUNSAN_SMOKE_PYTHON2_EXECUTABLE}
     )
-    set(boost_b2
-        ./b2
-            --prefix=${BUNSAN_SMOKE_ROOT}
-            -j5
-            toolset=gcc
-            variant=release
-            link=shared
-            threading=multi
-            address-model=${boost_address_model}
-            --without-coroutine
-    )
     set(boost_include ${BUNSAN_SMOKE_ROOT}/include)
 elseif(WIN32)
-    set(boost_configure bootstrap.bat)
-    set(boost_b2
-        ./b2
-            --prefix=${BUNSAN_SMOKE_ROOT}
-            -j5
-            toolset=gcc
-            variant=release
-            link=shared
-            threading=multi
-            address-model=${boost_address_model}
-            cxxflags=${boost_win_cxxflags}
-            --without-coroutine
-    )
+    if(MSYS)
+        set(boost_configure cmd //c bootstrap.bat mingw)
+    else()
+        set(boost_configure bootstrap.bat mingw)
+    endif()
     set(boost_include ${BUNSAN_SMOKE_ROOT}/include/boost-1_58)
 else()
     message(SEND_ERROR "Unknown platform")
 endif()
+set(boost_b2
+    ./b2
+        --prefix=${BUNSAN_SMOKE_ROOT}
+        -j5
+        toolset=gcc
+        variant=release
+        link=shared
+        threading=multi
+        address-model=${boost_address_model}
+        cxxflags=${boost_cxxflags}
+        --without-coroutine
+)
 
 include(ExternalProject)
 ExternalProject_Add(boost_core
