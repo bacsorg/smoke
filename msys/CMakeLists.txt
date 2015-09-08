@@ -1,11 +1,4 @@
-if(UNIX)
-    set(USE_MSYS_DEFAULT OFF)
-elseif(MINGW)
-    set(USE_MSYS_DEFAULT ON)
-else()
-    message("Unsupported platform")
-endif()
-option(USE_MSYS ${USE_MSYS_DEFAULT} "Use MSYS for system shell")
+option(USE_MSYS OFF "Use MSYS for system shell")
 
 if(USE_MSYS)
     find_path(MSYS_BIN
