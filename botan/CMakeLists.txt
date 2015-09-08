@@ -6,14 +6,16 @@ elseif(CYGWIN)
     set(botan_args --os=cygwin)
 endif()
 
-set(botan_make_args
-    "RM=${CMAKE_COMMAND} -E remove -f"
-    "RM_R=cmake -E remove_directory"
-)
 if(MINGW)
+    if(NOT MSYS)
+        set(botan_make_args
+            "RM=${CMAKE_COMMAND} -E remove -f"
+            "RM_R=cmake -E remove_directory"
+            "COPY=copy"
+            "LN=${CMAKE_COMMAND} -E copy_if_different"
+        )
+    endif()
     list(APPEND botan_make_args
-        "COPY=copy"
-        "LN=${CMAKE_COMMAND} -E copy_if_different"
         "SCRIPTS_DIR=${BUNSAN_SMOKE_PYTHON2_EXECUTABLE} src/scripts"
     )
 endif()
@@ -36,6 +38,15 @@ ExternalProject_Add(botan
     BUILD_COMMAND ${CMAKE_MAKE_PROGRAM} ${botan_make_args}
     INSTALL_COMMAND ${CMAKE_MAKE_PROGRAM} ${botan_make_args} install
 )
+if(MSYS)
+    ExternalProject_Add_Step(botan make_patch
+        COMMAND ${CMAKE_COMMAND}
+            -DBOTAN_SOURCE_ROOT=<SOURCE_DIR>
+            -P ${CMAKE_CURRENT_LIST_DIR}/msys_makefile_patch.cmake
+        DEPENDEES configure
+        DEPENDERS build
+    )
+endif()
 if(WIN32)
     ExternalProject_Add_Step(botan post_install
         COMMAND ${CMAKE_COMMAND}
