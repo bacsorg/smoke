@@ -12,6 +12,9 @@ else()
     find_package(BunsanCMake CONFIG REQUIRED)
 endif()
 
+set(CMAKE_BUILD_TYPE Release CACHE STRING
+    "Choose the type of build, options are: Debug, Release, RelWithDebInfo and MinSizeRel." FORCE)
+
 set(BUNSAN_SMOKE_NOOP ${CMAKE_COMMAND} -E echo_append)
 set(BUNSAN_SMOKE_ROOT ${CMAKE_BINARY_DIR}/root/usr)
 set(BUNSAN_SMOKE_CMAKE_ARGS
