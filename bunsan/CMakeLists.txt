@@ -50,5 +50,6 @@ add_bunsan_project(bunsan_bacs_problems bacs/problems
     bunsan_bacs_problem_single
 )
 add_bunsan_project(bunsan_bacs_archive bacs/archive
+    bunsan_rpc
     bunsan_bacs_problems
 )
