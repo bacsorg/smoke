@@ -1,4 +1,7 @@
 include(ExternalProject)
+
+add_custom_target(bunsan ALL)
+
 macro(add_bunsan_project name path)
     ExternalProject_Add(${name}
         DOWNLOAD_COMMAND ""
@@ -12,6 +15,7 @@ macro(add_bunsan_project name path)
             turtle
             ${ARGN}
     )
+    add_dependencies(bunsan ${name})
 endmacro()
 
 add_bunsan_project(bunsan_cmake cmake)
