@@ -27,8 +27,8 @@ endif()
 
 include(ExternalProject)
 ExternalProject_Add(grpc
-    URL https://github.com/grpc/grpc/archive/release-0_10_2.tar.gz
-    URL_MD5 770c5c9c5f6fb82488cde616b52d4c09
+    URL https://github.com/grpc/grpc/archive/release-0_11_0.tar.gz
+    URL_MD5 54de111e64821c4f8076cfabc2892e91
     BUILD_IN_SOURCE 1
     PATCH_COMMAND ${CMAKE_COMMAND}
         -DGRPC_SOURCE_ROOT=<SOURCE_DIR>
