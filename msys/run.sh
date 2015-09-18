@@ -1,3 +1,3 @@
 #!/bin/sh
-export PATH="$PATH:/usr/bin"
+export PATH="/usr/bin:$PATH"
 exec "$@"
