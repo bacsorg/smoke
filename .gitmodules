@@ -30,19 +30,19 @@
 	url = https://github.com/bunsanorg/broker.git
 [submodule "bunsan/bacs/common"]
 	path = bunsan/bacs/common
-	url = https://github.com/bunsanorg/bacs_common.git
+	url = https://github.com/bacsorg/common.git
 [submodule "bunsan/bacs/problem"]
 	path = bunsan/bacs/problem
-	url = https://github.com/bunsanorg/bacs_problem.git
+	url = https://github.com/bacsorg/problem.git
 [submodule "bunsan/bacs/problem_plugins/single"]
 	path = bunsan/bacs/problem_plugins/single
-	url = https://github.com/bunsanorg/bacs_problem_single.git
+	url = https://github.com/bacsorg/problem_single.git
 [submodule "bunsan/bacs/problems"]
 	path = bunsan/bacs/problems
-	url = https://github.com/bunsanorg/bacs_problems.git
+	url = https://github.com/bacsorg/problems.git
 [submodule "bunsan/rpc"]
 	path = bunsan/rpc
 	url = https://github.com/bunsanorg/rpc.git
 [submodule "bunsan/bacs/archive"]
 	path = bunsan/bacs/archive
-	url = https://github.com/bunsanorg/bacs_archive.git
+	url = https://github.com/bacsorg/archive.git
